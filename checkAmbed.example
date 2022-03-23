@@ -31,7 +31,7 @@ if [[ "$timeout" =~ .*"timeout".* ]]; then
    sshpass -p $PASSWORD ssh -p $PORT $USER@$HOST sudo systemctl restart ambed
    echo -e "Ambed service restarted"
 
-else echo -e "NO openstream timeouts detected"
+else echo -e "No openstream timeouts detected"
 
 fi
 
