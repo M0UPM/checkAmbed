@@ -5,7 +5,7 @@
 # Version 1.0
 # Run as a cron job at an interval to suit your needs
 # This script assumes you have sshpass installed
-
+dt=$(date '+%d/%m/%Y %H:%M:%S');
 # Set sshpass variables
 HOST='YOUR.REMOTE.AMBE.SERVER.ADDRESS'
 USER='REMOTE SERVER USERNAME'
@@ -21,17 +21,13 @@ timeout=$(tail -2 /var/log/messages | grep "timeout" | awk '{print $8}')
 
 if [[ "$stats" =~ .*"1000".* ]]; then
    sshpass -p $PASSWORD ssh -p $PORT $USER@$HOST sudo systemctl restart ambed
-   echo -e "Ambed service restarted"
-
-else echo -e "No Ambed stats errors detected"
+   echo -e "$dt Ambed service restarted due to trascoder error" >> /var/log/checkAmbed.log
 
 fi
 
 if [[ "$timeout" =~ .*"timeout".* ]]; then
    sshpass -p $PASSWORD ssh -p $PORT $USER@$HOST sudo systemctl restart ambed
-   echo -e "Ambed service restarted"
-
-else echo -e "No openstream timeouts detected"
+   echo -e "$dt Ambed service restarted due to openstream timeout" >> /var/log/checkAmbed.log
 
 fi
 
