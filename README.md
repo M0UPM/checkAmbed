@@ -5,5 +5,5 @@
 # cp checkAmbed.example checkAmbed
 # nano checkAmbed (now fill in the details for your remote ambed server and check/edit the log file lines in both "if" sections)
 # chmod +x checkAmbed
-# Set cron job for root to run checkAmbed at an interval to suit your needs
+# Set cron job for root to run checkAmbed at an interval to suit your needs (crontab -e)
 # I'm pretty new at this so use at your own risk, i accept no responsibility for loss or damage to your system
